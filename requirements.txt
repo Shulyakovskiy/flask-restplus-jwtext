@@ -31,7 +31,7 @@ python-editor==1.0.4
 python-engineio==3.6.0
 python-socketio==4.0.3
 pytz==2019.1
-selenium==3.8.1
+selenium==3.141.0
 six==1.11.0
 SQLAlchemy==1.2.0
 Werkzeug==0.14.1
