@@ -1,4 +1,5 @@
 import datetime
+from typing import Union
 
 import jwt
 
@@ -51,7 +52,7 @@ class User(db.Model):
             return e
 
     @staticmethod
-    def decode_auth_token(auth_token):
+    def decode_auth_token(auth_token: str) -> Union[int, str]:
         """
         Decodes the auth token
         :param auth_token:
