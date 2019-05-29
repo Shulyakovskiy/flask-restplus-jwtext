@@ -2,6 +2,8 @@
 
 ### Terminal commands
 
+    python manager.py run
+    ------------------------
     Initial installation: make install
 
     To run test: make tests
