@@ -31,8 +31,8 @@ PyJWT==1.7.1
 pyrsistent==0.15.2
 python-dateutil==2.8.0
 python-editor==1.0.4
-python-engineio==3.8.2.post1
-python-socketio==4.1.0
+python-engineio==3.8.2
+python-socketio==4.2.0
 pytz==2019.1
 selenium==3.141.0
 six==1.12.0
