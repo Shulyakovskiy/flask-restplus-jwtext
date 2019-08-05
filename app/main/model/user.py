@@ -32,7 +32,7 @@ class User(db.Model):
         return flask_bcrypt.check_password_hash(self.password_hash, password)
 
     @staticmethod
-    def encode_auth_token(user_id):
+    def encode_auth_token(user_id) -> str:
         """
         Generates the Auth Token
         :return: string
