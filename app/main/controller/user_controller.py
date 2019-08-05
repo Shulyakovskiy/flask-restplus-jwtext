@@ -27,7 +27,7 @@ class UserList(Resource):
         return save_new_user(data=data)
 
 
-@api.route('/<public_id>')
+@api.route("/<int:public_id>")
 @api.param('public_id', 'The User identifier')
 @api.response(404, 'User not found.')
 class User(Resource):
