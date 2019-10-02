@@ -3,7 +3,7 @@
 [![Updates](https://pyup.io/repos/github/Shulyakovskiy/flask-restplus-template/shield.svg)](https://pyup.io/repos/github/Shulyakovskiy/flask-restplus-template/)
 
 ### Terminal commands
-
+    gunicorn --config ./app/conf/gunicorn_config.py server:api
     python manager.py run
     ------------------------
     Initial installation: make install

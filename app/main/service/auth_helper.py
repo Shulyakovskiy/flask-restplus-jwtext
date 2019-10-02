@@ -1,5 +1,9 @@
+import datetime
+
+from flask_jwt_extended import create_access_token, create_refresh_token
+
 from app.main.model.user import User
-from ..service.blacklist_service import save_token
+from app.main.service.blacklist_service import BlackList
 
 
 class Auth:
@@ -34,6 +38,22 @@ class Auth:
             return response_object, 500
 
     @staticmethod
+    def login_user2(data):
+
+        user = User.query.filter_by(email=data.get('email')).first()
+
+        # this is what the `authenticate()` function did in security.py
+        if user and user.check_password(data.get('password')):
+            # identity= is what the identity() function did in security.py—now stored in the JWT
+            expires_token = datetime.timedelta(hours=24)
+            expires_refresh_token = datetime.timedelta(hours=48)
+            access_token = create_access_token(identity=user.id, expires_delta=expires_token, fresh=True)
+            refresh_token = create_refresh_token(user.id, expires_delta=expires_refresh_token)
+            return {"access_token": access_token, "refresh_token": refresh_token}, 200
+
+        return {"message": "Invalid credentials!"}, 401
+
+    @staticmethod
     def logout_user(data):
         if data:
             auth_token = data.split(" ")[1]
@@ -43,7 +63,7 @@ class Auth:
             resp = User.decode_auth_token(auth_token)
             if not isinstance(resp, str):
                 # mark the token as blacklisted
-                return save_token(token=auth_token)
+                return BlackList.save_token(token=auth_token)
             else:
                 response_object = {
                     'status': 'fail',

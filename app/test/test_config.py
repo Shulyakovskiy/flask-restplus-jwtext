@@ -5,7 +5,7 @@ from flask import current_app
 from flask_testing import TestCase
 
 from app.main.config import basedir
-from manage import app
+from server import app
 
 
 class TestDevelopmentConfig(TestCase):
