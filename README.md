@@ -39,5 +39,5 @@ https://medium.freecodecamp.org/structuring-a-flask-restplus-web-service-for-pro
 If you want to contribute to this flask restplus boilerplate, clone the repository and just start making pull requests.
 
 ```
-https://github.com/cosmic-byte/flask-restplus-boilerplate.git
+https://github.com/Shulyakovskiy/flask-restplus-jwtext.git
 ```
