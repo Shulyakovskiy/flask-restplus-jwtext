@@ -10,15 +10,15 @@ from app import blueprint
 from app.main import create_app, db
 from app.main.model.blacklist import BlacklistToken
 
-api = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
-api.register_blueprint(blueprint)
+app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
+app.register_blueprint(blueprint)
 
-api.app_context().push()
-manager = Manager(api)
-migrate = Migrate(api, db)
+app.app_context().push()
+manager = Manager(app)
+migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
-jwt = JWTManager(api)
+jwt = JWTManager(app)
 
 
 @jwt.user_claims_loader
@@ -92,7 +92,7 @@ def revoked_token_callback():
     )
 
 
-@api.after_request
+@app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
@@ -102,7 +102,7 @@ def after_request(response):
 
 @manager.command
 def run():
-    api.run(host="127.0.0.1", port=5000)
+    app.run(host="127.0.0.1", port=5000)
 
 
 @manager.command
@@ -116,4 +116,4 @@ def test():
 
 
 if __name__ == '__main__':
-    api.run(host="127.0.0.1", port=5000)
+    app.run(host="127.0.0.1", port=5000)
