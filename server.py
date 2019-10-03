@@ -7,10 +7,12 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 from app import blueprint
+from app.conf.app_env import UserEnv
 from app.main import create_app, db
 from app.main.model.blacklist import BlacklistToken
 
-app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
+UserEnv()
+app = create_app(os.getenv('BOILERPLATE_ENV'))
 app.register_blueprint(blueprint)
 
 app.app_context().push()

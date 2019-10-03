@@ -20,6 +20,7 @@ Flask-SocketIO="==4.1.0"
 Flask-SQLAlchemy="==2.4.0"
 Flask-Testing="==0.7.1"
 alembic="==1.2.1"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
